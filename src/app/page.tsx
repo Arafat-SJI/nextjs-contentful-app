@@ -10,7 +10,7 @@ const Home = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className='w-full'>
-      {JSON.stringify(page.fields.genericPage.fields.heroBanner.fields)}
+      {/* {JSON.stringify(page.fields.genericPage.fields.heroBanner.fields)} */}
         <Hero heroData={page.fields.genericPage.fields.heroBanner.fields} />
     </div>
   );
