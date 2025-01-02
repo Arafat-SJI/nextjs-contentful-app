@@ -1,8 +1,8 @@
 import { createClient } from 'contentful';
 
 if (!process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN) {
-  console.log(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
-  console.log(process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN);
+  // console.log(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
+  // console.log(process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN);
   throw new Error("Missing Contentful space ID or access token");
 }
 
