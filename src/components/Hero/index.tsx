@@ -22,4 +22,4 @@ const Hero = ({ heroData }: any) => {
     )
 }
 
-export default Hero
+export default Hero;

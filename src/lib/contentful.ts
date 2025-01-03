@@ -19,3 +19,12 @@ export const getPageBaseData = async (slug: string): Promise<any> => {
   });
   return response.items[0];
 };
+
+export const getHeaderData = async (): Promise<any> => {
+  const response = await client.getEntries<any>({
+    content_type: 'header',
+    // 'fields.slug': slug,
+    include: 10,
+  });
+  return response.items[0];
+};
