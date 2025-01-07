@@ -9,12 +9,8 @@ const client = createClient({
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN as string,
 });
 
-export const getPageBaseData = async (slug: string): Promise<any> => {
-  const response = await client.getEntries<any>({
-    content_type: 'pageBase',
-    'fields.slug': slug,
-    include: 10,
-  });
+export const getPageBaseData = async (query: any): Promise<any> => {
+  const response = await client.getEntries<any>(query);
   return response.items[0];
 };
 
