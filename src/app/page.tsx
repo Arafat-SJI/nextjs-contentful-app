@@ -1,35 +1,24 @@
-import { PAGE_BASE_QUERY_WITH_SLUG } from '@/lib/constant';
-import { getPageBaseData } from '../lib/contentful';
-import SliderHero from '@/components/SliderHero';
+import { PAGE_BASE_QUERY_WITH_SLUG } from "@/lib/constant/urlConstant";
+import { getPageBaseData } from "../lib/contentful";
+import { GENERIC_PAGE, HOME_PAGE } from "@/lib/constant/contentTypeConstant";
+import { getRootContentType } from "@/config/shortHandFunction/getRootContentType";
+import HomePage from "@/components/Layout/HomePage";
 
 const Home = async ({ params }: { params: { slug: string } }) => {
-  const page = await getPageBaseData(PAGE_BASE_QUERY_WITH_SLUG(params.slug));
-  // const pageInternalName = page.fields.genericPage.fields.internalName;
-  // const bannerInternalName = page.fields.genericPage.fields.topSection.fields.internalName;
-  const sliderHeroData = page?.fields?.genericPage?.fields?.topSection?.fields?.sliderImage;
-  const sliderCongig = page?.fields?.genericPage?.fields?.topSection?.fields;
-  const autoImageChange = sliderCongig.autoImageChange;
-  const imageIndicatorButton = sliderCongig.imageIndicatorButton;
-  const sliderControllerButton = sliderCongig.sliderControllerButton;
-  const fadeChange = sliderCongig.fadeChange;
-  const infiniteImageChange = sliderCongig.infiniteImageChange;
-  const autoplaySpeed = sliderCongig.autoplaySpeed;
-  const imageChangeSpeed = sliderCongig.imageChangeSpeed;
-  // console.log(sliderCongig)
-
+  const page = await getPageBaseData(
+    PAGE_BASE_QUERY_WITH_SLUG(params.slug, GENERIC_PAGE)
+  );
 
   return (
-    <div className='w-full'>
-      <SliderHero
-        sliderHeroData={sliderHeroData}
-        autoImageChange={autoImageChange}
-        imageIndicatorButton={imageIndicatorButton}
-        sliderControllerButton={sliderControllerButton}
-        fadeChange={fadeChange}
-        infiniteImageChange={infiniteImageChange}
-        autoplaySpeed={autoplaySpeed}
-        imageChangeSpeed={imageChangeSpeed}
-      />
+    <div className="w-full">
+      {/* // TODO: Add the logic for the home page
+          // TODO: contentTypeConversion: get the page type
+          // TODO: if page type is home page, then render the home page
+          // TODO: if page type is generic page, then render the generic page
+          // TODO: pageData.fields.content.sys.contentType.sys.id giving the page type
+      */}
+      <h1>Home Page</h1>
+      {getRootContentType(page) === GENERIC_PAGE ? <HomePage pageData={page} /> : <></>}
     </div>
   );
 };
