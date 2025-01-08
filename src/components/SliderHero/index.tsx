@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,38 +10,23 @@ import { SliderSettings } from '@/types';
 
 
 
-const SliderHero = ({ sliderHeroData, autoImageChange, imageIndicatorButton, sliderControllerButton, fadeChange, infiniteImageChange, autoplaySpeed, imageChangeSpeed }: {
-    sliderHeroData: any[];
-    autoImageChange: boolean;
-    imageIndicatorButton: boolean;
-    sliderControllerButton: boolean;
-    fadeChange: boolean;
-    infiniteImageChange: boolean;
-    autoplaySpeed: number;
-    imageChangeSpeed: number;
+const SliderHero = ({ sliderHeroData }: {
+    sliderHeroData: any;
 }) => {
 
-    sliderHeroData.forEach((item: any, index: any) => {
-        // const imageUrl = item?.fields?.media?.fields?.image?.fields?.file?.url;
-        // const imageTitle = item?.fields?.title;
-        // const imageDescription = item?.fields?.body?.content[0].content[0].value;
-        // console.log(imageUrl)
-        // console.log(imageTitle)
-        // console.log(imageDescription)
-        // console.log(autoImageChange)
-        // console.log(imageIndicatorButton)
-        // console.log(sliderControllerButton)
-    });
 
+    useEffect(() => {
+        console.log(sliderHeroData);
+    }, [sliderHeroData]);
 
     const settings: SliderSettings = {
-        dots: imageIndicatorButton || false,
-        autoplay: autoImageChange || false,
-        arrows: sliderControllerButton || false,
-        fade: fadeChange || false,
-        infinite: infiniteImageChange || false,
-        autoplaySpeed: autoplaySpeed || 2000,
-        speed: imageChangeSpeed || 500,
+        dots: sliderHeroData.imageIndicatorButton || false,
+        autoplay: sliderHeroData.autoImageChange || false,
+        arrows: sliderHeroData.sliderControllerButton || false,
+        fade: sliderHeroData.fadeChange || false,
+        infinite: sliderHeroData.infiniteImageChange || false,
+        autoplaySpeed: sliderHeroData.autoplaySpeed || 2000,
+        speed: sliderHeroData.imageChangeSpeed || 500,
         slidesToShow: 1,
         slidesToScroll: 1,
     };
@@ -51,7 +36,7 @@ const SliderHero = ({ sliderHeroData, autoImageChange, imageIndicatorButton, sli
             <div className='w-[650px]  px-10'>
                 <div className="slider-container">
                     <Slider {...settings}>
-                        {sliderHeroData.map((item: any, index: any) => {
+                        {sliderHeroData?.sliders?.map((item: any, index: any) => {
                             const entryID = item?.sys?.id;
                             const imgAlt = item?.fields?.media?.fields?.alt;
                             const imageUrl = item?.fields?.media?.fields?.image?.fields?.file?.url;
@@ -79,7 +64,9 @@ const SliderHero = ({ sliderHeroData, autoImageChange, imageIndicatorButton, sli
                     </Slider>
                 </div>
             </div>
-        </div>
+        </div> 
+
+    
     )
 }
 
