@@ -6,7 +6,7 @@ import HomePage from "@/components/Layout/HomePage";
 
 const Home = async ({ params }: { params: { slug: string } }) => {
   const page = await getPageBaseData(
-    PAGE_BASE_QUERY_WITH_SLUG(params.slug, GENERIC_PAGE)
+    PAGE_BASE_QUERY_WITH_SLUG(params.slug, HOME_PAGE)
   );
 
   return (
@@ -18,7 +18,7 @@ const Home = async ({ params }: { params: { slug: string } }) => {
           // TODO: pageData.fields.content.sys.contentType.sys.id giving the page type
       */}
       <h1>Home Page</h1>
-      {getRootContentType(page) === GENERIC_PAGE ? <HomePage pageData={page} /> : <></>}
+      {getRootContentType(page) === HOME_PAGE ? <HomePage pageData={page} /> : <></>}
     </div>
   );
 };
