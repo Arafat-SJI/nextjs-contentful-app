@@ -4,6 +4,8 @@ import { GENERIC_PAGE, HOME_PAGE } from "@/lib/constant/contentTypeConstant";
 import { getRootContentType } from "@/config/shortHandFunction/getRootContentType";
 import HomePage from "@/components/Layout/HomePage";
 
+
+
 const Home = async ({ params }: { params: { slug: string } }) => {
   const page = await getPageBaseData(
     PAGE_BASE_QUERY_WITH_SLUG(params.slug, HOME_PAGE)

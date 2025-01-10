@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: getSeoData(page)?.title || 'Page Not Found',
       description: getSeoData(page)?.description || 'Page description',
-      url: getSeoData(page)?.url || '/',
-      siteName: 'Your Site Name',
+      url: getSeoData(page)?.og_url || '/',
+      siteName: getSeoData(page)?.og_site_name || 'Site Name',
     },
   };
 }
