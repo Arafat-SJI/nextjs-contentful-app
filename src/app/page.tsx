@@ -18,7 +18,11 @@ const Home = async ({ params }: { params: { slug: string } }) => {
           // TODO: pageData.fields.content.sys.contentType.sys.id giving the page type
       */}
       <h1>Home Page</h1>
-      {getRootContentType(page) === HOME_PAGE ? <HomePage pageData={page} /> : <></>}
+      {getRootContentType(page) === HOME_PAGE ? (
+        <HomePage pageData={page} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
