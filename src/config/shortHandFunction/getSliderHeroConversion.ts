@@ -10,6 +10,7 @@ export const getSliderHeroConversion = (sliderHeroData: any) => {
         infiniteImageChange: heroData.fields?.infiniteImageChange,
         autoplaySpeed: heroData.fields?.autoplaySpeed,
         imageChangeSpeed: heroData.fields?.imageChangeSpeed,
+        customPagingPosition: heroData.fields?.customPagingPosition,
       };
     }
 };
