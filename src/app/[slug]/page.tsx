@@ -45,7 +45,6 @@ const DynamicRoute = async ({ params }: { params: { slug: string } }) => {
           // TODO: if page type is generic page, then render the generic page
           // TODO: pageData.fields.content.sys.contentType.sys.id giving the page type
       */}
-      {JSON.stringify(page)}
       {getRootContentType(page) === GENERIC_PAGE ? <GenericPage pageData={page} /> : <></>}
       {getRootContentType(page) === PRODUCT_PAGE ? <ProductPage pageData={page} /> : <></>}
     </div>
